@@ -44,7 +44,7 @@ resource "aws_security_group" "allow_ssh" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.ami.id
   instance_type = "t2.micro"
-  subnet_id     = aws_subnet.pub_subnet_1.id
+  subnet_id     = aws_subnet.pub_subnet[0].id
 
   tags = {
     Name = "Terraform"
