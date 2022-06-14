@@ -169,7 +169,7 @@ resource "aws_nat_gateway" "example" {
   count = local.create_vpc ? 1 : 0
 
   allocation_id = aws_eip.lb[0].id
-  subnet_id     = aws_subnet.priv_subnet[0].id
+  subnet_id     = aws_subnet.pub_subnet[0].id
 
   tags = {
     Name = "Nat_GW"
