@@ -15,14 +15,23 @@ terraform {
         version = "~> 3.0"
     }
   }
-}
+
+ }
+ 
 provider "aws" {
   region  = "us-east-1"
-  profile = "default"
-
-  default_tags {
-    tags = local.mandatory_tag
-
+  assume_role {
+    role_arn = "arn:aws:iam::${lookup(var.env, terraform.workspace)}:role/Terraform_Admin_Role"
   }
-
 }
+
+#   default_tags {
+#     tags = local.mandatory_tag
+
+#   }
+
+# }
+
+
+
+# role_arn: arn:aws:iam::075701685737:role/Terraform_Admin_Role
